@@ -1,0 +1,59 @@
+{% extends "base/base_fullscreen.html" %}
+{% load static %}
+
+{% block title %} Login {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="bg-light min-vh-100 d-flex flex-row align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-4">
+                <div class="card-group d-block d-md-flex row">
+                    <div class="card p-2 mb-0">
+                        <div class="card-body text-center">
+                            <img src="{% static 'dist/img/mywhy_logo.png' %}" alt="MyWhy" height="50">
+                            <p class="text-medium-emphasis {% if msg %}text-danger{% endif %}">
+                                {% if msg %}
+                                    {{ msg | safe }}
+                                {% else %}              
+                                    MyWhy System Login
+                                {% endif %}                      
+                            </p>
+
+                            <form class="" action="" method="post">
+                                {% csrf_token %}
+                                {% for fields in forms %}
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">
+                                        <i class="{% if fields.name == 'password' %}icon-lock{% else %}icon-user{% endif %}"></i>
+                                    </span>
+                                    {{ fields }}
+                                </div>
+                                {% endfor %}
+                                <div class="row">
+                                    <div class="col-6 text-left">
+                                        <input class="btn btn-primary px-4" type="submit" value="Login">
+                                    </div>
+                                <!--
+                                    <div class="col-6 text-end">
+                                        <button class="btn btn-link px-0" type="button">Forgot password?</button>
+                                    </div>
+                                -->
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

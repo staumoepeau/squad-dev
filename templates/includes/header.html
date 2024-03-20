@@ -1,0 +1,35 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE >
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Sione Taumoepeau">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="{% static 'dist/img/favicon.png' %}">
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- 
+		<link rel="stylesheet" type="text/css" href="{% static 'dist/vendors/css/font-awesome.min.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'dist/vendors/css/simple-line-icons.min.css' %}">
+	-->
+
+    <!-- Main styles for this application -->
+	<link href="{% static 'dist/css/coreui.css' %}" rel="stylesheet" type="text/css">
+	<link href="{% static 'node_modules/@coreui/icons/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static 'dist/css/style.css' %}"> 
+	
+
+	<!--
+	<link rel="stylesheet" type="text/css" href="{% static 'dist/css/bootstrap.css' %}"> 
+	<link rel="stylesheet" type="text/css" href="{% static 'src/css/form.css' %}">
+	-->
+ 
+	
+
+    {% block extrahead %}
+    {% endblock %}
+</head>

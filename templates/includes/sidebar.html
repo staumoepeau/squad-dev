@@ -1,0 +1,19 @@
+{% load static %}
+<div class="sidebar sidebar-light sidebar-fixed">
+  <div class="sidebar-brand d-none d-md-flex border-bottom">
+	<a href="{% url 'home' %}">
+	<img src="{% static 'dist/img/mywhy_logo.png' %}" alt="MyWhy" height="50">
+	</a>
+  </div>
+  <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="init">
+	<li class="nav-item"><a class="nav-link" href="{% url 'robot' %}">
+		<i class="cib-android-alt"></i>&nbsp;&nbsp;Robot</a>
+	</li>
+	<li class="nav-item"><a class="nav-link" href="colors.html">
+		<i class="cib-wpengine"></i>&nbsp;&nbsp;Missions
+		</a></li>
+	<li class="nav-item"><a class="nav-link" href="typography.html">
+		<i class="cib-dropbox"></i>&nbsp;&nbsp;Drop Box</a></li>
+	
+  </ul>
+</div>

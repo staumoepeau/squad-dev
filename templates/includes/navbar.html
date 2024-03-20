@@ -1,0 +1,99 @@
+{% load static %}
+
+<header class="header header-sticky mb-4">
+
+	<div class="container-fluid">
+		<ul class="header-nav d-none d-md-flex">
+            <li class="nav-item"><a {% if request.path == "" %} class="nav-link active" {% else %} class="nav-link" {% endif %} aria-current="page" href="{% url 'home' %}">Home</a>
+			</li>
+            <li class="nav-item"><a 
+				{% if request.path == "settings/robot" %} class="nav-link active" {% else %} class="nav-link" {% endif %} aria-current="page" href="{% url 'robot' %}">Settings</a>
+			</li>
+            <li class="nav-item"><a class="nav-link" href="#">Schedule</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">Mission</a></li>
+        </ul>
+	<ul class="header-nav ms-auto ms-sm-0 me-sm-4">
+		<li class="nav-item dropdown d-flex align-items-center">
+			<a class="nav-link py-0 flag-icon flag-icon-{{ LANGUAGE_CODE }}" href="" id="navbarDropdown" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+				<form action="{% url 'set_language' %}" method="POST" id="lang_form" class="navbar-form">
+					{% csrf_token %}
+					
+					<input name="next" type="hidden" value="{{ redirect_to }}">
+					
+					<div class="btn-group" role="group">
+						<button type="button" class="btn btn-ghost-light dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							{% for language in languages %}
+								{% if language.code == LANGUAGE_CODE %}
+									{% if language.code == 'en' %}
+										<i class="icon icon-xl cif-us"></i>
+									{% endif %}
+									{% if language.code == 'ja' %}
+										<i class="icon icon-xl cif-jp"></i>
+									{% endif %}
+								{% endif %}
+							{% endfor %}
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							{% for language in languages %}
+								<li>
+									<button type="submit" name="language" value="{{ language.code }}" class="{% if language.code == LANGUAGE_CODE %}selected{% else%}demo-text-black{% endif %} dropdown-item">
+										{% if language.code == 'en' %}
+											<span class="icon icon-xl cif-us"></span>&nbsp;{{ language.name_local }}
+										{% endif %}
+										{% if language.code == 'ja' %}
+											<span class="icon icon-xl cif-jp"></span>&nbsp;{{ language.name_local }}
+										{% endif %}
+									</button>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</form>
+				
+			</a>
+		</li>
+
+		<li class="nav-item dropdown d-flex align-items-center"><a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+			<div class="avatar avatar-md">
+				{% if request.user.userprofile %}
+                <img src="{{ request.user.userprofile.photo.url }}" class="avatar-img" alt="admin">
+                {% else %}
+                <img src="{% static 'src/img/man.png' %}" class="avatar-img" alt="Anynumos">
+                {% endif %}
+				<span class="avatar-status bg-success"></span></div>
+		  </a>
+
+		  <div class="dropdown-menu dropdown-menu-end pt-0">
+				<div class="dropdown-header bg-light py-2">
+				<div class="fw-semibold">Account</div>
+			  </div>
+			<a class="dropdown-item" href="#">
+				<i class="cil-user"></i> About
+			</a>
+
+			<a class="dropdown-item" href="#">
+				<i class="cil-user"></i> Profile
+			</a>
+			  
+			<div class="dropdown-divider"></div>
+			<a class="dropdown-item" href="{% url 'logout' %}">
+				<i class="cil-account-logout"></i> Logout</a>
+		  </div>
+		</li>
+	</ul>
+	</div>        
+	<!--
+	<div class="header-divider"></div>
+	<div class="container-fluid" >
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb my-0 ms-2">
+		<li class="breadcrumb-item">
+		<span>Home</span>
+		</li>
+		<li class="breadcrumb-item active"><span>Dashboard</span></li>
+		</ol>
+	</nav>
+	</div>
+	-->
+</header>

@@ -1,0 +1,91 @@
+{% extends 'base/base_home_page.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %}Squad Robot{% endblock %}
+{% block content %}
+
+<div class="body flex-grow-1 px-3">
+	<div class="container-fluid">
+		
+			<div class="row">
+				<div class="col-xl-12">
+
+				<div class="card mb-4">
+					<div class="card-header">
+						<i class="cil-list"></i>
+						ROBOTS
+					</div>
+					<div class="card-body p-4">
+					<div class="row">
+						<div class="col">
+						<div class="card-title mb-0"></div>
+						<div class="card-subtitle text-disabled mb-4">
+							<i class="cib-android-alt"></i>
+							{% if robot_count == 1 %}
+								Total Robot
+							{% else %}
+								Total Robots
+							{% endif %}
+							<span class="badge bg-primary">&nbsp;{{ robot_count }}</span>
+						</div>
+						</div>
+						<div class="col-auto ms-auto">
+						</div>
+					</div>
+
+					  {% if robot %}
+					  <div class="table-responsive">
+						<table class="table table-responsive-sm table-bordered table-striped table-sm">
+						  <thead class="thead-light">
+							<tr class="align-middle">
+							  <th>Robot Name</th>
+							  <th>Username</th>
+							  <th>Host</th>
+							  <th>Status</th>
+							  <th></th>
+							</tr>
+						  </thead>
+						  <tbody>
+							{% for robots in robot %}
+
+							<tr class="align-middle">
+
+							  <td>
+								<div class="text-nowrap">{{ robots.name }}</div>
+							  </td>
+							  <td>
+								<div class="text-nowrap">{{ robots.username }}</div>
+							  </td>
+							  <td>
+								<div class="text-nowrap">{{ robots.host }}</div>
+							  </td>
+							  <td>
+								<div class="text-nowrap">{{ robots.status }}</div>
+							  </td>
+							  <td class="text-end"> <!-- Add text-start class here -->
+
+								<button class="btn btn-info">
+									<i class="cil-video"></i> <!-- Use CoreUI icon class -->
+
+								  </button>
+								  <button class="btn btn-primary">
+									<i class="cil-camera"></i>
+								  </button>
+							</td>
+							</tr>
+							{% endfor %}
+						  </tbody>
+						</table>
+					  </div>
+					  {% else %}
+					  <div class="card-body">
+						  <h3>No Robot</h3>
+					  </div>
+					  {% endif %}
+					</div>
+				  </div>
+				</div>
+			  </div>
+	</div>
+</div>
+{% endblock %}

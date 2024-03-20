@@ -1,0 +1,55 @@
+{% load i18n %}
+{% load static %}
+{% get_current_language as LANGUAGECODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
+
+
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}">
+
+<!--Headers-->
+{% include 'includes/header.html' %}
+
+<body>
+	<div class="sidebar-fixed aside-menu-fixed aside-menu-hidden">
+	</div>
+	<div class="wrapper d-flex flex-column min-vh-100 bg-light dark:bg-transparent"><!--Navbar-->
+
+{% include 'includes/navbar_home_page.html' %}
+
+<div class="body flex-grow-1 px-3">
+    <!--Sidebar-->
+
+
+    <!-- Main content -->
+    <main class="main">
+
+        <!-- Breadcrumb -->
+ 
+        <!-- Page contents -->
+        <div class="container-fluid" style="width:100%;">
+            <div class="animated fadeIn">
+                {% block content %}
+                {% endblock %}
+            </div>
+
+        </div>
+        <!-- /.conainer-fluid -->
+    </main>
+
+
+    <!--Aside bar-->
+
+
+</div>
+
+<!--Footer-->
+{% include 'includes/footer.html' %}
+</div>
+
+<!--JS-->
+{% include 'includes/scripts.html' %}
+
+</body>
+</html>

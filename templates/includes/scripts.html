@@ -1,0 +1,19 @@
+{% load static %}
+<script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
+
+<!-- Bootstrap and necessary plugins -->
+<script src="{% static 'dist/vendors/js/jquery.min.js' %}"></script>
+<script src="{% static 'dist/vendors/js/@coreui/coreui/js/coreui.bundle.min.js' %}"></script>
+<!--
+<script src="{% static 'dist/vendors/js/bootstrap.bundle.js' %}"></script>
+<script src="{% static 'dist/vendors/js/popper.min.js' %}"></script>
+<script src="{% static 'dist/vendors/js/pace.min.js' %}"></script>
+<script src="{% static 'dist/js/app.js' %}"></script>
+-->
+
+<!-- Custom scripts required by this view -->
+<script src="{% static 'dist/js/views/main.js' %}"></script>
+
+{% block script %}
+
+{% endblock %}
